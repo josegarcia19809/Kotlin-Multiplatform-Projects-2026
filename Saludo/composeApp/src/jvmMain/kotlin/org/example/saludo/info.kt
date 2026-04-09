@@ -1,5 +1,6 @@
 package org.example.saludo
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,9 +10,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
+import org.jetbrains.compose.resources.painterResource
+import saludo.composeapp.generated.resources.Res
+import saludo.composeapp.generated.resources.venado2
 
 @Composable
 fun info() {
@@ -58,5 +63,11 @@ fun info() {
             color = Color.Red,
             textAlign = TextAlign.Center,
         )
+
+        Image(
+            painter = painterResource(Res.drawable.venado2),
+            contentDescription = "Venado"
+        )
+
     }
 }
