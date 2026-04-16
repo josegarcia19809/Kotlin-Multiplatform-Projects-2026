@@ -35,10 +35,6 @@ fun Botones() {
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            BotonConIcono()
-            SpaceHorizontal()
-            BotonIcono()
-            SpaceHorizontal()
             BotonElevado()
             SpaceHorizontal()
             BotonSecundario()
