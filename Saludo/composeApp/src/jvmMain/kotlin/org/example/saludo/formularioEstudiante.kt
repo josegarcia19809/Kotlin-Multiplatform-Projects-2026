@@ -14,6 +14,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.resources.painterResource
 import saludo.composeapp.generated.resources.Res
+import saludo.composeapp.generated.resources.maria
 import saludo.composeapp.generated.resources.pedro
 
 @Composable
@@ -50,7 +51,7 @@ fun formularioEstudiante() {
                 ) {
 
                     Image(
-                        painter = painterResource(Res.drawable.pedro),
+                        painter = painterResource(Res.drawable.maria),
                         contentDescription = "Venado",
                         modifier = Modifier
                             .size(100.dp)
