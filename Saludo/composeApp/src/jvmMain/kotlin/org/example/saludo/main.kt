@@ -14,6 +14,6 @@ fun main() = application {
             height = 800.dp
         )
     ) {
-        sumarNumeros()
+        MyBasicList1()
     }
 }
