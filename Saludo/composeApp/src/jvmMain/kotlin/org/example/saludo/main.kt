@@ -11,9 +11,9 @@ fun main() = application {
         title = "Saludo",
         state = rememberWindowState(
             width = 800.dp,
-            height = 800.dp
+            height = 600.dp
         )
     ) {
-        ListaUsuariosUltraPro()
+        ListaUsuariosSimple()
     }
 }
