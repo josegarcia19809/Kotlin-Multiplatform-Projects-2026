@@ -1,4 +1,4 @@
-package com.example.botonesapp.components
+package org.example.project
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
