@@ -1,0 +1,23 @@
+12|Jose Luis|Atlacomulco|Toluca|120.0
+20|Carolina|Monterrey|Veracruz|500.0
+3|Mariana Torres|Guadalajara|Puebla|350.0
+7|Carlos Mendez|Toluca|Cancun|950.0
+11|Fernanda Ruiz|Queretaro|Merida|780.0
+15|Luis Alberto|Leon|Ciudad de Mexico|210.0
+18|Ana Sofia|Pachuca|Acapulco|640.0
+22|Miguel Angel|Morelia|Tijuana|1200.0
+25|Daniela Perez|Chihuahua|Oaxaca|870.0
+28|Ricardo Lopez|San Luis Potosi|Mazatlan|690.0
+31|Valeria Hernandez|Tuxtla Gutierrez|Monterrey|430.0
+34|Jorge Ramirez|Aguascalientes|Puerto Vallarta|980.0
+37|Camila Flores|Culiacan|Toluca|560.0
+40|Eduardo Sanchez|Hermosillo|Guadalajara|720.0
+43|Paola Martinez|Durango|Queretaro|310.0
+46|Alejandro Castro|Veracruz|Puebla|260.0
+49|Natalia Gomez|Cancun|Merida|150.0
+52|Fernando Diaz|Ciudad Juarez|Leon|840.0
+55|Gabriela Morales|Oaxaca|Monterrey|1100.0
+58|Santiago Navarro|Toluca|Morelia|190.0
+61|Andrea Jimenez|Puebla|Acapulco|470.0
+64|Ivan Ortega|Mazatlan|Guadalajara|530.0
+100|Arteminio Morales|Saltillo|Atlacomulco|321.0
