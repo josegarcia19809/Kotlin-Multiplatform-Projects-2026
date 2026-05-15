@@ -14,6 +14,6 @@ fun main() = application {
             height = 700.dp
         )
     ) {
-        PantallaPasajeros()
+        PantallaCalificacionCheckBox()
     }
 }
