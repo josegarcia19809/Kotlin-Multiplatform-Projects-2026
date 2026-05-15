@@ -72,6 +72,7 @@ fun ListaComidas2() {
         Text(
             text = "🍔 Comida Rápida",
             fontSize = 30.sp,
+            fontFamily = mozillaText,
             fontWeight = FontWeight.ExtraBold
         )
 
