@@ -10,10 +10,10 @@ fun main() = application {
         onCloseRequest = ::exitApplication,
         title = "KotlinVentanas",
         state = rememberWindowState(
-            width = 1400.dp,
-            height = 700.dp
+            width = 1200.dp,
+            height = 900.dp
         )
     ) {
-        ListaCheckBox()
+        Principal()
     }
 }
