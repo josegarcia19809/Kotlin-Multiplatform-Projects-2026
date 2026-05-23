@@ -1,0 +1,22 @@
+Jose Luis|712 123 1234|4|Mexicana
+Carolina|712 123 1223|4|Americana
+Martha|712 123 1245|5|Canadiense
+Lupita Gómez|712 456 7890|1|Mexicana
+Fernanda Ruiz|744 987 6543|4|Mexicana
+Jorge Hernández|555 234 5678|5|Mexicana
+Patricia López|811 456 1234|2|Mexicana
+Ricardo Torres|222 789 4561|3|Mexicana
+Mariana Castro|667 123 9876|1|Mexicana
+Eduardo Ramírez|664 321 6547|4|Mexicana
+Gabriela Flores|477 852 9631|5|Mexicana
+Sofía Navarro|999 741 2583|2|Mexicana
+Daniel Ortega|656 951 3574|3|Mexicana
+Valeria Sánchez|614 753 1598|1|Mexicana
+Miguel Ángel Pérez|229 852 7416|4|Americana
+Andrea Morales|442 357 9512|5|Mexicana
+Hugo Jiménez|833 258 1479|2|Mexicana
+Camila Reyes|871 456 2587|3|Mexicana
+Alejandro Vega|686 951 7532|1|Americana
+Paola Mendoza|443 147 2589|4|Mexicana
+Luis Fernando Díaz|998 357 8521|5|Mexicana
+Renata Salazar|312 654 7891|2|Mexicana
