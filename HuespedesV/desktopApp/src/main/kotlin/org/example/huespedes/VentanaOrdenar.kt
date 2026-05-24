@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.dp
 fun VentanaOrdenar(
     onCerrar: () -> Unit
 ) {
-
     val huespedesOrdenados =
         HuespedService.huespedes.sortedBy {
             it.dias
@@ -29,7 +28,6 @@ fun VentanaOrdenar(
         modifier = Modifier
             .padding(20.dp)
     ) {
-
         Text("📅 Huéspedes ordenados por días")
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -37,7 +35,6 @@ fun VentanaOrdenar(
         Row(
             modifier = Modifier.fillMaxWidth()
         ) {
-
             Text(
                 "Nombre",
                 modifier = Modifier.width(150.dp)
@@ -59,9 +56,7 @@ fun VentanaOrdenar(
         Spacer(modifier = Modifier.height(10.dp))
 
         LazyColumn {
-
             items(huespedesOrdenados) { huesped ->
-
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -95,7 +90,6 @@ fun VentanaOrdenar(
                 onCerrar()
             }
         ) {
-
             Text("Cerrar")
         }
     }

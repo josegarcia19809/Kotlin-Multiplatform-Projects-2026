@@ -7,11 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
@@ -36,6 +32,10 @@ fun VentanaEditar(
 
     var nacionalidad by remember {
         mutableStateOf(huesped.nacionalidad)
+    }
+
+    var mensajeError by remember {
+        mutableStateOf("")
     }
 
     Column(
@@ -95,18 +95,57 @@ fun VentanaEditar(
 
         Spacer(modifier = Modifier.height(20.dp))
 
+        if (mensajeError.isNotEmpty()) {
+
+            Text(mensajeError)
+
+            Spacer(modifier = Modifier.height(10.dp))
+        }
+
         Button(
             onClick = {
+
+                if (
+                    nombre.isBlank() ||
+                    telefono.isBlank() ||
+                    dias.isBlank() ||
+                    nacionalidad.isBlank()
+                ) {
+
+                    mensajeError =
+                        "⚠️ Todos los campos son obligatorios"
+
+                    return@Button
+                }
+
+                val diasNumero = dias.toIntOrNull()
+
+                if (diasNumero == null) {
+
+                    mensajeError =
+                        "⚠️ Los días deben ser numéricos"
+
+                    return@Button
+                }
+
+                if (diasNumero <= 0) {
+
+                    mensajeError =
+                        "⚠️ Los días deben ser mayores a 0"
+
+                    return@Button
+                }
 
                 HuespedService.huespedes[indice] =
                     Huesped(
                         nombre,
                         telefono,
-                        dias.toInt(),
+                        diasNumero,
                         nacionalidad
                     )
 
                 HuespedService.guardarArchivo()
+
                 onCerrar()
             }
         ) {

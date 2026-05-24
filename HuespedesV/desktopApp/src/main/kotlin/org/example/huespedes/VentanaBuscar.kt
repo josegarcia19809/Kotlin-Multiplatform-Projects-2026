@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.dp
 fun VentanaBuscar(
     onCerrar: () -> Unit
 ) {
-
     var nombreBuscar by remember {
         mutableStateOf("")
     }
@@ -32,7 +31,6 @@ fun VentanaBuscar(
         modifier = Modifier
             .padding(20.dp)
     ) {
-
         Text("🔍 Buscar huésped")
 
         Spacer(modifier = Modifier.height(10.dp))
@@ -54,25 +52,18 @@ fun VentanaBuscar(
 
                 val resultado =
                     HuespedService.huespedes.find {
-
                         it.nombre.contains(nombreBuscar, true)
                     }
 
                 if (resultado != null) {
-
                     huespedEncontrado = resultado
-
                     mensaje = "✅ Huésped encontrado"
-
                 } else {
-
                     huespedEncontrado = null
-
                     mensaje = "❌ No encontrado"
                 }
             }
         ) {
-
             Text("Buscar")
         }
 
@@ -97,7 +88,6 @@ fun VentanaBuscar(
                 onCerrar()
             }
         ) {
-
             Text("Cerrar")
         }
     }

@@ -56,10 +56,8 @@ fun VentanaFiltrar(
 
         Button(
             onClick = {
-
                 resultados =
                     HuespedService.huespedes.filter {
-
                         it.nacionalidad.lowercase() ==
                                 nacionalidadBuscar.lowercase()
                     }
@@ -72,7 +70,6 @@ fun VentanaFiltrar(
                     }
             }
         ) {
-
             Text("Filtrar")
         }
 
@@ -107,9 +104,7 @@ fun VentanaFiltrar(
         Spacer(modifier = Modifier.height(10.dp))
 
         LazyColumn {
-
             items(resultados) { huesped ->
-
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -143,7 +138,6 @@ fun VentanaFiltrar(
                 onCerrar()
             }
         ) {
-
             Text("Cerrar")
         }
     }
