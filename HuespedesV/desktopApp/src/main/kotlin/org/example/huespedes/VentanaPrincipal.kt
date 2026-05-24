@@ -1,23 +1,40 @@
 package org.example.huespedes
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
+import androidx.compose.material.Card
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.rememberWindowState
 
+private val FondoPrincipal = Color(0xFF121212)
+private val FondoCard = Color(0xFF1E1E1E)
+
+private val VerdeBoton = Color(0xFF4CAF50)
+private val GrisTenue = Color(0xFF3A3A3A)
+
+private val Rojo = Color(0xFFE53935)
+
+private val TextoClaro = Color(0xFFF5F5F5)
+private val TextoSecundario = Color(0xFFBDBDBD)
+
 @Composable
 fun VentanaPrincipal() {
+
     LaunchedEffect(Unit) {
         HuespedService.leerArchivo()
     }
-    //Sección inicial: Aquí van los estados si las ventanas nuevas se abren o están cerradas
+
     var mostrarVentanaAgregar by remember {
         mutableStateOf(false)
     }
@@ -50,149 +67,285 @@ fun VentanaPrincipal() {
         mutableStateOf(false)
     }
 
-    MaterialTheme {
-        Column(
+    MaterialTheme(
+        colors = darkColors(
+            primary = VerdeBoton,
+            background = FondoPrincipal,
+            surface = FondoCard,
+            onPrimary = Color.White,
+            onBackground = TextoClaro,
+            onSurface = TextoClaro
+        )
+    ) {
+
+        Box(
             modifier = Modifier
                 .fillMaxSize()
+                .background(FondoPrincipal)
                 .padding(20.dp)
         ) {
-            Text("🏨 SISTEMA DE HUÉSPEDES")
-            Spacer(modifier = Modifier.height(20.dp))
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(10.dp)
-            ) {
-                // Sección de botones: Aquí van los botones
-                Button(
-                    onClick = {
-                        mostrarVentanaAgregar = true
-                    }
+
+            Column {
+
+                Card(
+                    backgroundColor = FondoCard,
+                    shape = RoundedCornerShape(20.dp),
+                    elevation = 12.dp,
+                    modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text("➕ Agregar huésped")
-                }
 
-                Button(
-                    onClick = {
-                        mostrarVentanaBuscar = true
-                    }
-                ) {
-                    Text("🔍 Buscar huésped")
-                }
-
-                Button(
-                    onClick = {
-                        mostrarVentanaFiltrar = true
-                    }
-                ) {
-                    Text("🌎 Filtrar por nacionalidad")
-                }
-
-                Button(
-                    onClick = {
-                        mostrarVentanaOrdenar = true
-                    }
-                ) {
-                    Text("📅 Ordenar por días")
-                }
-
-                Button(
-                    onClick = {
-                        System.exit(0)
-                    }
-                ) {
-                    Text("🚪 Salir")
-                }
-
-            }
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Row(
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(
-                    text = "Nombre",
-                    modifier = Modifier.width(200.dp)
-                )
-
-                Text(
-                    text = "Teléfono",
-                    modifier = Modifier.width(150.dp)
-                )
-
-                Text(
-                    text = "Días",
-                    modifier = Modifier.width(100.dp)
-                )
-
-                Text(
-                    text = "Nacionalidad"
-                )
-
-            }
-
-            Spacer(modifier = Modifier.height(10.dp))
-
-            LazyColumn {
-                itemsIndexed(HuespedService.huespedes) { index, huesped ->
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 5.dp)
+                    Column(
+                        modifier = Modifier.padding(25.dp)
                     ) {
-                        Text(
-                            text = huesped.nombre,
-                            modifier = Modifier.width(200.dp)
-                        )
 
                         Text(
-                            text = huesped.telefono,
-                            modifier = Modifier.width(150.dp)
+                            text = "🏨 SISTEMA DE HUÉSPEDES",
+                            color = TextoClaro,
+                            fontSize = 28.sp,
+                            fontWeight = FontWeight.Bold
                         )
+
+                        Spacer(modifier = Modifier.height(8.dp))
 
                         Text(
-                            text = huesped.dias.toString(),
-                            modifier = Modifier.width(100.dp)
+                            text = "Administración moderna de huéspedes",
+                            color = TextoSecundario,
+                            fontSize = 16.sp
                         )
+                    }
+                }
 
-                        Text(
-                            text = huesped.nacionalidad
+                Spacer(modifier = Modifier.height(25.dp))
+
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+
+                    Button(
+                        onClick = {
+                            mostrarVentanaAgregar = true
+                        },
+                        shape = RoundedCornerShape(12.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            backgroundColor = VerdeBoton,
+                            contentColor = Color.White
                         )
+                    ) {
 
-                        Spacer(modifier = Modifier.width(20.dp))
+                        Text("➕ Agregar")
+                    }
 
-                        Button(
-                            onClick = {
-                                indiceEditar = index
-                                mostrarVentanaEditar = true
-                            }
+                    Button(
+                        onClick = {
+                            mostrarVentanaBuscar = true
+                        },
+                        shape = RoundedCornerShape(12.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            backgroundColor = GrisTenue,
+                            contentColor = Color.White
+                        )
+                    ) {
+
+                        Text("🔍 Buscar")
+                    }
+
+                    Button(
+                        onClick = {
+                            mostrarVentanaFiltrar = true
+                        },
+                        shape = RoundedCornerShape(12.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            backgroundColor = GrisTenue,
+                            contentColor = Color.White
+                        )
+                    ) {
+
+                        Text("🌎 Filtrar")
+                    }
+
+                    Button(
+                        onClick = {
+                            mostrarVentanaOrdenar = true
+                        },
+                        shape = RoundedCornerShape(12.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            backgroundColor = GrisTenue,
+                            contentColor = Color.White
+                        )
+                    ) {
+
+                        Text("📅 Ordenar")
+                    }
+
+                    Button(
+                        onClick = {
+                            System.exit(0)
+                        },
+                        shape = RoundedCornerShape(12.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            backgroundColor = Rojo,
+                            contentColor = Color.White
+                        )
+                    ) {
+
+                        Text("🚪 Salir")
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(25.dp))
+
+                Card(
+                    backgroundColor = FondoCard,
+                    shape = RoundedCornerShape(20.dp),
+                    elevation = 10.dp,
+                    modifier = Modifier.fillMaxSize()
+                ) {
+
+                    Column(
+                        modifier = Modifier.padding(20.dp)
+                    ) {
+
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .background(GrisTenue)
+                                .padding(12.dp)
                         ) {
-                            Text("✏️ Editar")
+
+                            Text(
+                                text = "Nombre",
+                                color = TextoClaro,
+                                modifier = Modifier.width(220.dp),
+                                fontWeight = FontWeight.Bold
+                            )
+
+                            Text(
+                                text = "Teléfono",
+                                color = TextoClaro,
+                                modifier = Modifier.width(180.dp),
+                                fontWeight = FontWeight.Bold
+                            )
+
+                            Text(
+                                text = "Días",
+                                color = TextoClaro,
+                                modifier = Modifier.width(100.dp),
+                                fontWeight = FontWeight.Bold
+                            )
+
+                            Text(
+                                text = "Nacionalidad",
+                                color = TextoClaro,
+                                modifier = Modifier.width(180.dp),
+                                fontWeight = FontWeight.Bold
+                            )
+
+                            Text(
+                                text = "Acciones",
+                                color = TextoClaro,
+                                fontWeight = FontWeight.Bold
+                            )
                         }
 
-                        Spacer(modifier = Modifier.width(10.dp))
+                        Spacer(modifier = Modifier.height(10.dp))
 
-                        Button(
-                            onClick = {
-                                indiceEliminar = index
-                                mostrarConfirmacionEliminar = true
+                        LazyColumn {
+
+                            itemsIndexed(HuespedService.huespedes) { index, huesped ->
+
+                                Card(
+                                    backgroundColor = Color(0xFF252525),
+                                    shape = RoundedCornerShape(15.dp),
+                                    elevation = 6.dp,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(vertical = 6.dp)
+                                ) {
+
+                                    Row(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(15.dp),
+                                        verticalAlignment = Alignment.CenterVertically
+                                    ) {
+
+                                        Text(
+                                            text = huesped.nombre,
+                                            color = TextoClaro,
+                                            modifier = Modifier.width(220.dp)
+                                        )
+
+                                        Text(
+                                            text = huesped.telefono,
+                                            color = TextoClaro,
+                                            modifier = Modifier.width(180.dp)
+                                        )
+
+                                        Text(
+                                            text = huesped.dias.toString(),
+                                            color = TextoClaro,
+                                            modifier = Modifier.width(100.dp)
+                                        )
+
+                                        Text(
+                                            text = huesped.nacionalidad,
+                                            color = TextoClaro,
+                                            modifier = Modifier.width(180.dp)
+                                        )
+
+                                        Button(
+                                            onClick = {
+
+                                                indiceEditar = index
+                                                mostrarVentanaEditar = true
+                                            },
+                                            shape = RoundedCornerShape(10.dp),
+                                            colors = ButtonDefaults.buttonColors(
+                                                backgroundColor = VerdeBoton,
+                                                contentColor = Color.White
+                                            )
+                                        ) {
+
+                                            Text("✏️ Editar")
+                                        }
+
+                                        Spacer(
+                                            modifier = Modifier.width(10.dp)
+                                        )
+
+                                        Button(
+                                            onClick = {
+
+                                                indiceEliminar = index
+                                                mostrarConfirmacionEliminar = true
+                                            },
+                                            shape = RoundedCornerShape(10.dp),
+                                            colors = ButtonDefaults.buttonColors(
+                                                backgroundColor = Rojo,
+                                                contentColor = Color.White
+                                            )
+                                        ) {
+
+                                            Text("🗑️ Borrar")
+                                        }
+                                    }
+                                }
                             }
-                        ) {
-                            Text("🗑️ Borrar")
                         }
-
                     }
                 }
             }
         }
 
-        // Sección final: Aquí se pone si una ventana se abrirá
         if (mostrarVentanaAgregar) {
+
             Window(
                 onCloseRequest = {
                     mostrarVentanaAgregar = false
                 },
                 title = "Agregar huésped"
             ) {
+
                 VentanaAgregar(
                     onCerrar = {
                         mostrarVentanaAgregar = false
@@ -201,7 +354,11 @@ fun VentanaPrincipal() {
             }
         }
 
-        if (mostrarVentanaEditar && indiceEditar != -1) {
+        if (
+            mostrarVentanaEditar &&
+            indiceEditar != -1
+        ) {
+
             Window(
                 onCloseRequest = {
                     mostrarVentanaEditar = false
@@ -223,51 +380,83 @@ fun VentanaPrincipal() {
             mostrarConfirmacionEliminar &&
             indiceEliminar != -1
         ) {
+
             Window(
                 onCloseRequest = {
                     mostrarConfirmacionEliminar = false
                 },
                 title = "Confirmar eliminación",
                 state = rememberWindowState(
-                    width = 350.dp,
-                    height = 180.dp
+                    width = 400.dp,
+                    height = 220.dp
                 )
             ) {
 
-                Column(
+                Box(
                     modifier = Modifier
+                        .fillMaxSize()
+                        .background(FondoPrincipal)
                         .padding(20.dp)
                 ) {
-                    Text(
-                        "⚠️ ¿Deseas eliminar a ${
-                            HuespedService.huespedes[indiceEliminar].nombre
-                        }?"
-                    )
 
-                    Spacer(modifier = Modifier.height(20.dp))
+                    Column {
 
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(10.dp)
-                    ) {
+                        Text(
+                            text = "⚠️ Confirmar eliminación",
+                            color = TextoClaro,
+                            fontSize = 22.sp,
+                            fontWeight = FontWeight.Bold
+                        )
 
-                        Button(
-                            onClick = {
-                                HuespedService.huespedes.removeAt(
-                                    indiceEliminar
+                        Spacer(modifier = Modifier.height(15.dp))
+
+                        Text(
+                            text = "¿Deseas eliminar a ${HuespedService.huespedes[indiceEliminar].nombre}?",
+                            color = TextoSecundario,
+                            fontSize = 16.sp
+                        )
+
+                        Spacer(modifier = Modifier.height(25.dp))
+
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(12.dp)
+                        ) {
+
+                            Button(
+                                onClick = {
+
+                                    HuespedService.huespedes.removeAt(
+                                        indiceEliminar
+                                    )
+
+                                    HuespedService.guardarArchivo()
+
+                                    mostrarConfirmacionEliminar = false
+                                },
+                                shape = RoundedCornerShape(10.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    backgroundColor = VerdeBoton,
+                                    contentColor = Color.White
                                 )
-                                HuespedService.guardarArchivo()
-                                mostrarConfirmacionEliminar = false
-                            }
-                        ) {
-                            Text("✅ Sí")
-                        }
+                            ) {
 
-                        Button(
-                            onClick = {
-                                mostrarConfirmacionEliminar = false
+                                Text("✅ Sí")
                             }
-                        ) {
-                            Text("❌ Cancelar")
+
+                            Button(
+                                onClick = {
+
+                                    mostrarConfirmacionEliminar = false
+                                },
+                                shape = RoundedCornerShape(10.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    backgroundColor = Rojo,
+                                    contentColor = Color.White
+                                )
+                            ) {
+
+                                Text("❌ Cancelar")
+                            }
                         }
                     }
                 }
@@ -275,12 +464,14 @@ fun VentanaPrincipal() {
         }
 
         if (mostrarVentanaBuscar) {
+
             Window(
                 onCloseRequest = {
                     mostrarVentanaBuscar = false
                 },
                 title = "Buscar huésped"
             ) {
+
                 VentanaBuscar(
                     onCerrar = {
                         mostrarVentanaBuscar = false
@@ -290,12 +481,14 @@ fun VentanaPrincipal() {
         }
 
         if (mostrarVentanaFiltrar) {
+
             Window(
                 onCloseRequest = {
                     mostrarVentanaFiltrar = false
                 },
-                title = "Filtrar por nacionalidad"
+                title = "Filtrar huéspedes"
             ) {
+
                 VentanaFiltrar(
                     onCerrar = {
                         mostrarVentanaFiltrar = false
@@ -305,11 +498,12 @@ fun VentanaPrincipal() {
         }
 
         if (mostrarVentanaOrdenar) {
+
             Window(
                 onCloseRequest = {
                     mostrarVentanaOrdenar = false
                 },
-                title = "Ordenar por días"
+                title = "Ordenar huéspedes"
             ) {
 
                 VentanaOrdenar(
@@ -319,6 +513,5 @@ fun VentanaPrincipal() {
                 )
             }
         }
-
     }
 }
