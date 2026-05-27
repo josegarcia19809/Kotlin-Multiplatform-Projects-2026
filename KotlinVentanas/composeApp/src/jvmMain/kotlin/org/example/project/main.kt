@@ -14,6 +14,6 @@ fun main() = application {
             height = 900.dp
         )
     ) {
-        ComboBoxEjemplo()
+        DashboardMedico()
     }
 }

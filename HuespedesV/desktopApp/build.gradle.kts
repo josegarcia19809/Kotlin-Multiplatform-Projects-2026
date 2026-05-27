@@ -13,6 +13,8 @@ dependencies {
     implementation(libs.kotlinx.coroutinesSwing)
 
     implementation(libs.compose.uiToolingPreview)
+    // Dependencia para iconos
+    implementation("org.jetbrains.compose.material:material-icons-extended:1.7.3")
 }
 
 compose.desktop {

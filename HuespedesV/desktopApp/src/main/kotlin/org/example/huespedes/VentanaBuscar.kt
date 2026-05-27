@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -12,16 +14,20 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-private val FondoVentana = Color(0xFF121212)
-private val FondoCard = Color(0xFF1E1E1E)
+private val FondoVentana = Color(0xFFEAF6F6)
 
-private val VerdeBoton = Color(0xFF4CAF50)
-private val GrisTextField = Color(0xFF2C2C2C)
+private val FondoCard = Color.White
 
-private val TextoClaro = Color(0xFFF5F5F5)
-private val TextoSecundario = Color(0xFFBDBDBD)
+private val VerdeBoton = Color(0xFF2EC4B6)
 
-private val VerdeExito = Color(0xFF66BB6A)
+private val GrisTextField = Color(0xFFF4F7F8)
+
+private val TextoOscuro = Color(0xFF1E293B)
+
+private val TextoSecundario = Color(0xFF7B8794)
+
+private val VerdeExito = Color(0xFF43A047)
+
 private val RojoError = Color(0xFFE53935)
 
 @Composable
@@ -47,8 +53,8 @@ fun VentanaBuscar(
             background = FondoVentana,
             surface = FondoCard,
             onPrimary = Color.White,
-            onBackground = TextoClaro,
-            onSurface = TextoClaro
+            onBackground = TextoOscuro,
+            onSurface = TextoOscuro
         )
     ) {
 
@@ -73,7 +79,7 @@ fun VentanaBuscar(
 
                     Text(
                         text = "🔍 Buscar huésped",
-                        color = TextoClaro,
+                        color = TextoOscuro,
                         fontSize = 26.sp,
                         fontWeight = FontWeight.Bold
                     )
@@ -88,24 +94,49 @@ fun VentanaBuscar(
 
                     Spacer(modifier = Modifier.height(25.dp))
 
-                    TextField(
+                    OutlinedTextField(
                         value = nombreBuscar,
                         onValueChange = {
                             nombreBuscar = it
                         },
-                        label = {
-                            Text("Nombre")
+
+                        placeholder = {
+                            Text(
+                                text = "Buscar huésped...",
+                                color = TextoSecundario
+                            )
                         },
-                        modifier = Modifier.fillMaxWidth(),
-                        shape = RoundedCornerShape(12.dp),
-                        colors = TextFieldDefaults.textFieldColors(
-                            backgroundColor = GrisTextField,
-                            textColor = TextoClaro,
-                            focusedIndicatorColor = VerdeBoton,
-                            unfocusedIndicatorColor = Color.Transparent,
-                            focusedLabelColor = VerdeBoton,
-                            unfocusedLabelColor = TextoSecundario,
-                            cursorColor = VerdeBoton
+
+                        leadingIcon = {
+
+                            Icon(
+                                imageVector = Icons.Default.Search,
+                                contentDescription = "Buscar",
+                                tint = VerdeBoton
+                            )
+                        },
+
+                        singleLine = true,
+
+                        shape = RoundedCornerShape(50.dp),
+
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(58.dp),
+
+                        colors = TextFieldDefaults.outlinedTextFieldColors(
+
+                            backgroundColor = Color(0xFFF4F7F8),
+
+                            textColor = TextoOscuro,
+
+                            focusedBorderColor = VerdeBoton,
+
+                            unfocusedBorderColor = Color.Transparent,
+
+                            cursorColor = VerdeBoton,
+
+                            focusedLabelColor = VerdeBoton
                         )
                     )
 
@@ -229,7 +260,7 @@ fun VentanaBuscar(
 
                                 Text(
                                     text = "📋 Información del huésped",
-                                    color = TextoClaro,
+                                    color = TextoOscuro,
                                     fontSize = 20.sp,
                                     fontWeight = FontWeight.Bold
                                 )
@@ -238,7 +269,7 @@ fun VentanaBuscar(
 
                                 Text(
                                     text = "👤 Nombre: ${huesped.nombre}",
-                                    color = TextoClaro,
+                                    color = TextoOscuro,
                                     fontSize = 16.sp
                                 )
 
@@ -246,7 +277,7 @@ fun VentanaBuscar(
 
                                 Text(
                                     text = "📞 Teléfono: ${huesped.telefono}",
-                                    color = TextoClaro,
+                                    color = TextoOscuro,
                                     fontSize = 16.sp
                                 )
 
@@ -254,7 +285,7 @@ fun VentanaBuscar(
 
                                 Text(
                                     text = "📅 Días: ${huesped.dias}",
-                                    color = TextoClaro,
+                                    color = TextoOscuro,
                                     fontSize = 16.sp
                                 )
 
@@ -262,7 +293,7 @@ fun VentanaBuscar(
 
                                 Text(
                                     text = "🌎 Nacionalidad: ${huesped.nacionalidad}",
-                                    color = TextoClaro,
+                                    color = TextoOscuro,
                                     fontSize = 16.sp
                                 )
                             }
