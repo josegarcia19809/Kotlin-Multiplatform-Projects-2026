@@ -3,8 +3,8 @@ package org.example.saludo
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -12,8 +12,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 
+import androidx.compose.foundation.Image
+import org.jetbrains.compose.resources.painterResource
+
+// Importación auto-generada del recurso
+import saludo.shared.generated.resources.Res
+import saludo.shared.generated.resources.rana
+
 @Composable
-fun info() {
+fun mostrarImagen() {
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -30,8 +37,13 @@ fun info() {
             text = "Mi nombre es José L García Morales",
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colors.primary,
+            color = MaterialTheme.colorScheme.primary,
             textAlign = TextAlign.Center,
+        )
+
+        Image(
+            painter = painterResource(Res.drawable.rana),
+            contentDescription = "Rana"
         )
     }
 }
