@@ -8,6 +8,14 @@ fun main() = application {
         onCloseRequest = ::exitApplication,
         title = "Saludo",
     ) {
+<<<<<<< Updated upstream
         mensajes()
+=======
+<<<<<<< Updated upstream
+        sumarNumeros()
+=======
+        MotionAnimationView()
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     }
 }
